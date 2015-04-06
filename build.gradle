@@ -1,0 +1,60 @@
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    group = 'com.hazelcast.techops.training'
+    version = '0.0.1'
+
+    idea {
+        /*project {
+            jdkName = '1.7'
+            languageLevel = '1.7'
+        }*/
+        module {
+            downloadSources = true
+            downloadJavadoc = true
+        }
+    }
+
+    task makeDirs(description: 'make all dirs for project setup') << {
+        def sources = [sourceSets.main, sourceSets.test]
+        sources*.allSource*.srcDirs.flatten().each { File srcDir ->
+            println "making $srcDir"
+            srcDir.mkdirs()
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    repositories {
+        jcenter()
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar, javadocJar
+    }
+
+    dependencies {
+        compile "com.hazelcast:hazelcast:$HZ_VERSION"
+        compile "com.hazelcast:hazelcast-client:$HZ_VERSION"
+
+    }
+}
+
+project(':lab1'){
+
+}
