@@ -55,6 +55,89 @@ subprojects {
     }
 }
 
-project(':lab1'){
+project(':lab1') {
+    description = 'Hazelcast Configuration'
+}
 
+project(':lab2') {
+    description = "Map Eviction"
+
+    task startMember(type: JavaExec, group: 'lab') {
+        jvmArgs = ["-Xms128M", "-Xmx256M"]
+        main = 'Main'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+    task startEvictAll(type: JavaExec, group: 'lab') {
+        main = 'EvictAll'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+}
+
+project(':lab3') {
+    description = 'MapLoader and MapStore'
+
+    dependencies {
+        compile "org.hsqldb:hsqldb:2.2.9"
+        compile "org.hibernate:hibernate-core:4.3.7.Final"
+        compile 'com.google.guava:guava:18.0'
+    }
+
+    task startLoadAll(type: JavaExec, group: 'lab') {
+        main = 'LoadAll'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+}
+
+project(':lab4') {
+    description = 'Criteria API'
+
+    task startPredicatemember(type: JavaExec, group: 'lab') {
+        main = 'PredicateMember'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+}
+
+project(':lab5') {
+    description = 'Indexes'
+
+    task startIndexBenchmark(type: JavaExec, group: 'lab') {
+        main = 'IndexBenchmark'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+    task startAdditionalMember(type: JavaExec, group: 'lab') {
+        main = 'AdditionalMember'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+}
+
+project(':lab6') {
+    description = 'Bounded Blocking Queue'
+
+    task startConsumer(type: JavaExec, group: 'lab') {
+        main = 'ConsumerMember'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+    task startProducer(type: JavaExec, group: 'lab') {
+        main = 'ProducerMember'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+}
+
+project(':lab7') {
+    description = 'Locking'
+
+    task startRaceFreeMember(type: JavaExec, group: 'lab') {
+        main = 'RaceFreeMember'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+    task startRacyMember(type: JavaExec, group: 'lab') {
+        main = 'RacyMember'
+        classpath = sourceSets.main.runtimeClasspath
+    }
 }
