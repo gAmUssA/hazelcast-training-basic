@@ -15,12 +15,18 @@
   ~ limitations under the License.
   -->
 
-<hazelcast-client xsi:schemaLocation="http://www.hazelcast.com/schema/client-config hazelcast-client-config-3.5.xsd"
-           xmlns="http://www.hazelcast.com/schema/client-config"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <import resource="hazelcast-client-network-config.xml"/>
+<hazelcast-client
+        xsi:schemaLocation="http://www.hazelcast.com/schema/client-config http://hazelcast.com/schema/client-config/hazelcast-client-config-3.4.xsd"
+        xmlns="http://www.hazelcast.com/schema/client-config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!--    <import resource="hazelcast-client-network-config.xml"/>-->
     <group>
         <name>dev-configured-from-xml</name>
         <password>1234</password>
     </group>
+    <network>
+        <cluster-members>
+            <address>127.0.0.1:7000</address>
+        </cluster-members>
+    </network>
 </hazelcast-client>
