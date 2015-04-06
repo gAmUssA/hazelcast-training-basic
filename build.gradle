@@ -32,6 +32,11 @@ subprojects {
 
     repositories {
         jcenter()
+
+        // Hazelcast snapshots repository
+        maven {
+            url = "https://oss.sonatype.org/content/repositories/snapshots"
+        }
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
@@ -57,6 +62,15 @@ subprojects {
 
 project(':lab1') {
     description = 'Hazelcast Configuration'
+
+    task startXMLMain(type: JavaExec, group: 'lab') {
+        main = 'XMLMain'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+    task startXMLMain(type: JavaExec, group: 'lab') {
+        main = 'ProgrammaticMain'
+        classpath = sourceSets.main.runtimeClasspath
+    }
 }
 
 project(':lab2') {
