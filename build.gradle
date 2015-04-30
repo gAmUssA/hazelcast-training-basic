@@ -67,7 +67,7 @@ project(':lab1') {
         main = 'XMLMain'
         classpath = sourceSets.main.runtimeClasspath
     }
-    task startXMLMain(type: JavaExec, group: 'lab') {
+    task startProgrammaticMain(type: JavaExec, group: 'lab') {
         main = 'ProgrammaticMain'
         classpath = sourceSets.main.runtimeClasspath
     }
